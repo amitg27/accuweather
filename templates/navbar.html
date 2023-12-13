@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Weather Reports</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home | </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/weatherurl">Weather Report | </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/searched">Searched Data | </a>
+                    </li>
+                    
+                    {% if session["username"] %}
+                        <a class="nav-link active" href="/logout">Logout | </a>
+                                        
+                    {%else%}
+                        <a class="nav-link active" href="/register"> Register Now | </a>
+                        <a class="nav-link active" href="/login"> Login  | </a>
+                    {% endif %}   
+                    
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="/contactus">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

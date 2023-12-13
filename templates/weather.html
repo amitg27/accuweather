@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+{% include 'navbar.html' %}
+<div>
+<p>Welcome {{session["username"]}}
+    <h3>Welcome to All India Weather Reports provided by INC Solutions</h3>
+    {% if session["username"] %}
+        Please Enter the City Name
+        <form method="Post" action="/weatherurl">
+        <table>
+                <tr>
+                    <th><label for="cityname">CityName:</label></th>
+                    <td><input type="text" id="cityname" class="form-control" name="cityname" required></td>
+                </tr>
+                <tr><td></td><td><input type="submit" value="Search"></td></tr>
+            </table>
+            
+            {% if error %}
+                <table><tr><td>An Error occoured during the search</td></tr></table>
+            {% endif %}   
+            
+            {% if cityname %}
+            Weather Forcast for <b>{{cityname}}</b> is as follows
+              {% endif %}  
+                        {% if forecast %}                   
+                        <table>
+                            <tr><td>Date : </td><td>
+                                {{ forecast[0]['Date'] }}
+                                </td></tr>                            
+                            <tr><td>Maximum Temperature : </td><td>
+                                {{ forecast[0]['Temperature']['Maximum']['Value'] }}
+                                </td></tr>                            
+                            <tr><td>Minimum Temperature : </td><td>
+                                {{ forecast[0]['Temperature']['Minimum']['Value'] }}
+                                </td></tr>                            
+                            <tr><td>Day Forecast: </td><td>
+                                {{ forecast[0]['Day']['IconPhrase'] }}
+                                </td></tr>                            
+                            <tr><td>Night Forecast: </td><td>
+                                {{ forecast[0]['Night']['IconPhrase'] }}
+                                </td></tr>                            
+                                    {% endif %}    
+                            </form>
+                        {%else%}
+                <p>you are not logged in, please <a href="/login"> Login </a> to access the Weather Report Section</p>
+                       {% endif %}   
+                 
+                              
+        
+ </p>
+ </div>   
+</body>
+</html>
