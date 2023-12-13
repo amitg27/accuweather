@@ -23,14 +23,3 @@ def getforecast(locationkey):
         return(data["DailyForecasts"])
     #print(data)
 
-# =============================================================================
-#     for key1 in data["DailyForecasts"]:
-#         print("Weather Forecast for "+key1['Date']+"is:")
-#         print("Temperature in F (minimum) is: "+str(key1['Temperature']['Minimum']['Value']))
-#         print("Temperature in F (maximum) is: " + str(key1['Temperature']['Maximum']['Value']))
-#         print("Day Forecast "+str(key1['Day']['IconPhrase']))
-#         print("Day Forecast "+str(key1['Night']['IconPhrase']))
-#         print("------------------------------------------------------------------------")
-# 
-# =============================================================================
-#getforecast(locationkey)
